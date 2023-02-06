@@ -1,6 +1,4 @@
-﻿using Cities.Models;
-
-namespace Cities.API.Models
+﻿namespace Cities.Models
 {
     public class CityDto
     {
@@ -8,7 +6,7 @@ namespace Cities.API.Models
         public string Name { get; set; }
         public string? Description { get; set; }
 
-        public ICollection<PointOfInterestDto> PointsOfInterest { get; set; } = new List<PointOfInterestDto>();
+        public ICollection<PointOfInterestDto> PointsOfInterest { get; set; }
 
         public int NumberOfPointInterest
         {
