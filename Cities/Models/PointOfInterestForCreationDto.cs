@@ -2,7 +2,7 @@
 
 namespace Cities.Models
 {
-    public class PointOfInterestForCreation
+    public class PointOfInterestForCreationDto
     {
         [Required]
         public string Name { get; set; }

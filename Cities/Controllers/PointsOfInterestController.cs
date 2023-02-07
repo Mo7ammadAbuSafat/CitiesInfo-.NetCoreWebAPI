@@ -56,7 +56,7 @@ namespace Cities.Controllers
         [HttpPost]
         public async Task<ActionResult<PointOfInterestDto>> CreatePointOfInterest(
            int cityId,
-           PointOfInterestForCreation pointOfInterest)
+           PointOfInterestForCreationDto pointOfInterest)
         {
             if (!await cityInfoRepository.CityExistsAsync(cityId))
             {
@@ -84,7 +84,7 @@ namespace Cities.Controllers
 
         [HttpPut("{pointOfInterestId}")]
         public async Task<ActionResult> UpdatePointOfInterest(int cityId, int pointOfInterestId,
-            PointOfInterestForUpdate pointOfInterest)
+            PointOfInterestForUpdateDto pointOfInterest)
         {
             if (!await cityInfoRepository.CityExistsAsync(cityId))
             {
@@ -104,7 +104,7 @@ namespace Cities.Controllers
         [HttpPatch("{pointofinterestid}")]
         public async Task<ActionResult> PartiallyUpdatePointOfInterest(
             int cityId, int pointOfInterestId,
-            JsonPatchDocument<PointOfInterestForUpdate> patchDocument)
+            JsonPatchDocument<PointOfInterestForUpdateDto> patchDocument)
         {
             if (!await cityInfoRepository.CityExistsAsync(cityId))
             {
@@ -118,7 +118,7 @@ namespace Cities.Controllers
                 return NotFound();
             }
 
-            var pointOfInterestToPatch = mapper.Map<PointOfInterestForUpdate>(
+            var pointOfInterestToPatch = mapper.Map<PointOfInterestForUpdateDto>(
                 pointOfInterestEntity);
 
             patchDocument.ApplyTo(pointOfInterestToPatch, ModelState);
